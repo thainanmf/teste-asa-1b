@@ -1,0 +1,15 @@
+zone "rn.br"{
+    type master;
+    file "/etc/bind/db.rn.br";
+    allow-transfer{
+       any;
+    };
+};
+
+zone "1.25.10.in-addr.arpa"{
+    type master;
+    file "/etc/bind/rv.db.rn.br";
+    allow-transfer{
+        any;
+    };
+};

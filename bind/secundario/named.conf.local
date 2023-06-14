@@ -1,0 +1,15 @@
+zone "rn.br"{
+    type slave;
+    file "/var/lib/bind/db.rn.br";
+    masters{
+       10.25.2.50;
+    };
+};
+
+zone "1.25.10.in-addr.arpa"{
+    type slave;
+    file "/var/lib/bind/rv.db.rn.br";
+    masters{
+        10.25.2.50;
+    };
+};

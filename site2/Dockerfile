@@ -1,2 +1,2 @@
 FROM nginx:latest
-COPY site2/c.html /usr/share/nginx/html/index.html
+COPY site2.html /usr/share/nginx/html/index.html

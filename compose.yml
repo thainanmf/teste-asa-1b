@@ -1,47 +1,65 @@
 services:
   web01:
     build:
-      context: .
-      dockerfile: site1/Dockerfile
+      context: ./site1
+      dockerfile: Dockerfile
     image: web01
-    container_name: c01
+    container_name: web01
     networks:
-      - asa-network
-
+      - teste-asa-1b
   web02:
     build:
-      context: .
-      dockerfile: site2/Dockerfile
+      context: ./site2
+      dockerfile: Dockerfile
     image: web02
-    container_name: c02
+    container_name: web02
     networks:
-      - asa-network
-
+      - teste-asa-1b
   web03:
     build:
-      context: .
-      dockerfile: site3/Dockerfile
+      context: ./site3
+      dockerfile: Dockerfile
     image: web03
-    container_name: c03
+    container_name: web03
     networks:
-      - asa-network
-
+      - teste-asa-1b
   proxy:
+      build:
+        context: ./proxy
+        dockerfile: Dockerfile
+      image: proxy
+      container_name: proxy
+      ports:
+        - "8080:80"
+      depends_on:
+        - web01
+        - web02
+        - web03
+      networks:
+        - teste-asa-1b
+  dns:
     build:
-      context: .
-      dockerfile: proxy/Dockerfile
-    image: proxy
-    container_name: proxy
+      context: ./bind/primario
+      dockerfile: Dockerfile
+    image: primario
+    container_name: primario
     ports:
-      - "8080:80"
-    depends_on:
-      - web01
-      - web02
-      - web03
+      - "53:53/tcp"
+      - "53:53/udp"
     networks:
-      - asa-network
-
-# Docker Networks
+      - teste-asa-1b
+  dnns:
+    build:
+      context: ./bind/secundario
+      dockerfile: Dockerfile
+    image: secundario
+    container_name: secundario
+    ports:
+      - "5353:53/tcp"
+      - "5353:53/udp"
+    networks:
+      - teste-asa-1b    
+#Docker Networks
 networks:
-  asa-network:
+  teste-asa-1b:
     driver: bridge

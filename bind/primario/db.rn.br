@@ -1,0 +1,11 @@
+@   IN  SOA rn.br. admin.rn.br. (
+            2023010101 ; Serial
+            3H ; Refresh
+            1H ; Retry
+            1W ; Expire
+            1D ; Minimum TTL
+)
+@   IN  NS  thainan.rn.br.
+
+thainan IN  A   10.25.2.50
+www     IN  A   10.25.2.50

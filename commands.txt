@@ -14,4 +14,10 @@ docker image ls     <---- lista as imagens
 docker image rm     <---- para apagar as imagens
 
 docker container ls     <---- lista os containers
-docker container rm     <---- para apagar os containers
+docker container rm     <---- para apagar os conta
+
+comandos git
+git status
+git add .  
+git commit -m "primeiro commit"
+git push

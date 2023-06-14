@@ -1,0 +1,11 @@
+@   IN  SOA thainan.rn.br. contato.rn.br. (
+            2023010101 ; Serial
+            3H ; Refresh
+            1H ; Retry
+            1W ; Expire
+            1D ; Minimum TTL
+)
+@   IN  NS  thainan.rn.br.
+
+160  IN  PTR thainan.rn.br.
+160  IN  PTR www.rn.br.
